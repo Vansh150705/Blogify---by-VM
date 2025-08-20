@@ -1,5 +1,14 @@
 # Blogify by VM
 
+![React](https://img.shields.io/badge/React-61DAFB?style=flat&logo=react&logoColor=black)
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat&logo=node.js&logoColor=white)
+![Express](https://img.shields.io/badge/Express.js-000000?style=flat&logo=express&logoColor=white)
+![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=flat&logo=mongodb&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-38B2AC?style=flat&logo=tailwind-css&logoColor=white)
+![JWT](https://img.shields.io/badge/JWT-000000?style=flat&logo=JSONwebtokens&logoColor=white)
+![Google Gemini](https://img.shields.io/badge/Google_Gemini-4285F4?style=flat&logo=google&logoColor=white)
+![ImageKit](https://img.shields.io/badge/ImageKit-FF6C37?style=flat&logo=imagekit&logoColor=white)
+
 **Full-Stack AI-Powered Blogging Platform**
 
 ---
@@ -16,7 +25,7 @@ Blogify by VM is a **full-stack blogging application** built with the **MERN sta
 - **Database:** MongoDB  
 - **Authentication:** JWT-based login  
 - **APIs & Integrations:** Google Gemini, ImageKit  
-- **Deployment:** Vercel / Render
+- **Deployment:** Vercel 
 
 ---
 
@@ -37,3 +46,4 @@ Blogify by VM is a **full-stack blogging application** built with the **MERN sta
 - **Password:** `123456`  
 
 > ⚠️ These credentials are for demonstration purposes only.
+
