@@ -37,6 +37,11 @@ const BlogList = () => {
             </div>
         ))}
       </div>
+      {!loading && (
+        <p className='text-center text-sm text-gray-500 mb-6'>
+          {displayedBlogs.length} {displayedBlogs.length === 1 ? 'blog' : 'blogs'}{input ? ` for "${input}"` : ''}
+        </p>
+      )}
       {loading ? (
         <div className='flex justify-center mb-24'>
           <div className='animate-spin rounded-full h-10 w-10 border-4 border-t-[#1ABC9C] border-gray-200'></div>
