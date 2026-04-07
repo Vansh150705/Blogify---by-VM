@@ -16,6 +16,7 @@ export const AppProvider = ({ children })=>{
     const [blogs, setBlogs] = useState([])
     const [input, setInput] = useState("")
     const [loading, setLoading] = useState(true)
+    const [categories, setCategories] = useState([])
 
     const fetchBlogs = async ()=>{
         try {
@@ -28,8 +29,18 @@ export const AppProvider = ({ children })=>{
         }
     }
 
+    const fetchCategories = async ()=>{
+        try {
+           const {data} = await axios.get('/api/blog/categories');
+           if(data.success) setCategories(data.categories)
+        } catch {
+            // Fall back to the static category list on failure
+        }
+    }
+
     useEffect(()=>{
         fetchBlogs();
+        fetchCategories();
         const token = localStorage.getItem('token')
         if(token){
             setToken(token);
@@ -38,7 +49,7 @@ export const AppProvider = ({ children })=>{
     },[])
 
     const value = {
-        axios, navigate, token, setToken, blogs, setBlogs, input, setInput, loading
+        axios, navigate, token, setToken, blogs, setBlogs, input, setInput, loading, categories
     }
 
     return (
