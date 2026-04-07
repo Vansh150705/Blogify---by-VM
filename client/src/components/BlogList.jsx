@@ -7,7 +7,10 @@ import { useAppContext } from '../context/AppContext'
 const BlogList = () => {
 
     const [menu, setMenu] = useState("All")
-    const {blogs, input, loading} = useAppContext()
+    const {blogs, input, loading, categories} = useAppContext()
+
+    // Prefer categories from the API; fall back to the bundled static list
+    const menuCategories = categories.length ? ['All', ...categories] : blogCategories
 
     const filteredBlogs = ()=>{
       if(input === ''){
@@ -21,7 +24,7 @@ const BlogList = () => {
   return (
     <div>
       <div className='flex justify-center gap-4 sm:gap-8 my-10 relative'>
-        {blogCategories.map((item)=> (
+        {menuCategories.map((item)=> (
             <div key={item} className='relative'>
                 <button onClick={()=> setMenu(item)}
                  className={`cursor-pointer text-gray-500 ${menu === item && 'text-white px-4 pt-0.5'}`}>
