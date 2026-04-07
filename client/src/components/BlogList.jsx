@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import { blogCategories } from '../assets/assets'
 import { motion } from "motion/react"
 import BlogCard from './BlogCard'
@@ -12,14 +12,12 @@ const BlogList = () => {
     // Prefer categories from the API; fall back to the bundled static list
     const menuCategories = categories.length ? ['All', ...categories] : blogCategories
 
-    const filteredBlogs = ()=>{
-      if(input === ''){
-        return blogs
-      }
-      return blogs.filter((blog)=> blog.title.toLowerCase().includes(input.toLowerCase()) || blog.category.toLowerCase().includes(input.toLowerCase()))
-    }
-
-    const displayedBlogs = filteredBlogs().filter((blog)=> menu === "All" ? true : blog.category === menu)
+    const displayedBlogs = useMemo(()=>{
+      const bySearch = input === ''
+        ? blogs
+        : blogs.filter((blog)=> blog.title.toLowerCase().includes(input.toLowerCase()) || blog.category.toLowerCase().includes(input.toLowerCase()))
+      return bySearch.filter((blog)=> menu === "All" ? true : blog.category === menu)
+    }, [blogs, input, menu])
 
   return (
     <div>
