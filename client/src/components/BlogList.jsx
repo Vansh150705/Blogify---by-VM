@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { blogCategories } from '../assets/assets'
 import { motion } from "motion/react"
 import BlogCard from './BlogCard'
@@ -19,6 +19,9 @@ const BlogList = () => {
         : blogs.filter((blog)=> blog.title.toLowerCase().includes(input.toLowerCase()) || blog.category.toLowerCase().includes(input.toLowerCase()))
       return bySearch.filter((blog)=> menu === "All" ? true : blog.category === menu)
     }, [blogs, input, menu])
+
+    // Reset the visible count whenever the active filter or search changes
+    useEffect(()=>{ setVisibleCount(8) }, [menu, input])
 
   return (
     <div>
