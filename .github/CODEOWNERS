@@ -1,0 +1,8 @@
+# Default owner for everything in the repo
+*       @Vansh150705
+
+# Frontend
+/client/    @Vansh150705
+
+# Backend
+/server/    @Vansh150705
