@@ -1,4 +1,5 @@
 import fs from 'fs'
+import mongoose from 'mongoose'
 import imagekit from '../configs/imageKit.js';
 import Blog from '../models/Blog.js';
 import Comment from '../models/Comment.js';
@@ -71,6 +72,9 @@ export const getAllBlogs = async (req, res)=>{
 export const getBlogById = async (req, res) =>{
     try {
         const { blogId } = req.params;
+        if(!mongoose.isValidObjectId(blogId)){
+            return res.json({ success: false, message: "Invalid blog id" });
+        }
         // Increment the view count atomically and return the updated document
         const blog = await Blog.findByIdAndUpdate(
             blogId,
@@ -89,6 +93,9 @@ export const getBlogById = async (req, res) =>{
 export const deleteBlogById = async (req, res) =>{
     try {
         const { id } = req.body;
+        if(!mongoose.isValidObjectId(id)){
+            return res.json({ success: false, message: "Invalid blog id" });
+        }
         await Blog.findByIdAndDelete(id);
 
         // Delete all comments associated with the blog
@@ -104,6 +111,9 @@ export const deleteBlogById = async (req, res) =>{
 export const togglePublish = async (req, res) =>{
     try {
         const { id } = req.body;
+        if(!mongoose.isValidObjectId(id)){
+            return res.json({success: false, message: "Invalid blog id"});
+        }
         const blog = await Blog.findById(id);
         if(!blog){
             return res.json({success: false, message: "Blog not found"});
