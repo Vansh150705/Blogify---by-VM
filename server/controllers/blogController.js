@@ -62,7 +62,30 @@ export const getAllBlogs = async (req, res)=>{
             ];
         }
 
-        const blogs = await Blog.find(query).sort({ createdAt: -1 })
+        const dbQuery = Blog.find(query).sort({ createdAt: -1 })
+
+        // Optional pagination: only applied when a page/limit is provided
+        const { page, limit } = req.query;
+        if (page || limit) {
+            const currentPage = Math.max(1, parseInt(page) || 1);
+            const perPage = Math.min(50, Math.max(1, parseInt(limit) || 9));
+            const total = await Blog.countDocuments(query);
+            const blogs = await dbQuery
+                .skip((currentPage - 1) * perPage)
+                .limit(perPage);
+            return res.json({
+                success: true,
+                blogs,
+                pagination: {
+                    page: currentPage,
+                    limit: perPage,
+                    total,
+                    totalPages: Math.ceil(total / perPage),
+                },
+            });
+        }
+
+        const blogs = await dbQuery
         res.json({success: true, blogs})
     } catch (error) {
         res.json({success: false, message: error.message})
