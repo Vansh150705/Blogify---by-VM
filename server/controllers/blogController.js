@@ -69,6 +69,15 @@ export const getAllBlogs = async (req, res)=>{
     }
 }
 
+export const getCategories = async (req, res) =>{
+    try {
+        const categories = await Blog.distinct('category', { isPublished: true })
+        res.json({success: true, categories})
+    } catch (error) {
+        res.json({success: false, message: error.message})
+    }
+}
+
 export const getBlogById = async (req, res) =>{
     try {
         const { blogId } = req.params;
