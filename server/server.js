@@ -3,6 +3,7 @@ import 'dotenv/config'
 import cors from 'cors'
 import mongoose from 'mongoose'
 import connectDB from './configs/db.js';
+import logger from './middleware/logger.js';
 import adminRouter from './routes/adminRoutes.js';
 import blogRouter from './routes/blogRoutes.js';
 
@@ -13,6 +14,7 @@ await connectDB()
 // Middlewares
 app.use(cors())
 app.use(express.json())
+app.use(logger)
 
 // Routes
 app.get('/', (req, res)=> res.send("API is Working"))
