@@ -162,7 +162,12 @@ export const togglePublish = async (req, res) =>{
 export const addComment = async (req, res) =>{
     try {
         const {blog, name, content } = req.body;
-        await Comment.create({blog, name, content});
+
+        if(!blog || !name?.trim() || !content?.trim()){
+            return res.json({success: false, message: "Name and comment are required"})
+        }
+
+        await Comment.create({blog, name: name.trim(), content: content.trim()});
         res.json({success: true, message: 'Comment added for review'})
     } catch (error) {
         res.json({success: false, message: error.message})
