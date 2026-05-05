@@ -14,6 +14,7 @@ const Dashboard = () => {
         views: 0,
         recentBlogs: []
     })
+    const [loading, setLoading] = useState(true)
 
     const { axios } = useAppContext()
 
@@ -23,6 +24,8 @@ const Dashboard = () => {
          data.success ? setDashboardData(data.dashboardData) : toast.error(data.message)
        } catch (error) {
             toast.error(error.message)
+       } finally {
+            setLoading(false)
        }
      }
 
@@ -32,6 +35,13 @@ const Dashboard = () => {
 
   return (
     <div className='flex-1 p-4 md:p-10 bg-blue-50/50'>
+
+        {loading && (
+            <div className='flex items-center gap-2 mb-4 text-gray-500 text-sm'>
+                <div className='animate-spin rounded-full h-4 w-4 border-2 border-t-[#1ABC9C] border-gray-300'></div>
+                Loading dashboard…
+            </div>
+        )}
 
         <div className='flex flex-wrap gap-4'>
 
