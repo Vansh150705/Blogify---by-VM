@@ -99,6 +99,11 @@ const Dashboard = () => {
                         {dashboardData.recentBlogs.map((blog, index)=>{
                             return <BlogTableItem key={blog._id} blog={blog} fetchBlogs={fetchDashboard} index={index + 1}/>
                         })}
+                        {!loading && dashboardData.recentBlogs.length === 0 && (
+                            <tr>
+                                <td colSpan={5} className='px-2 py-6 text-center text-gray-400'>No blogs yet.</td>
+                            </tr>
+                        )}
                     </tbody>
                 </table>
             </div>
