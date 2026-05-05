@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { assets } from '../../assets/assets'
 import BlogTableItem from '../../components/admin/BlogTableItem'
 import { useAppContext } from '../../context/AppContext'
+import { formatNumber } from '../../utils/formatNumber'
 import toast from 'react-hot-toast'
 
 const Dashboard = () => {
@@ -10,6 +11,7 @@ const Dashboard = () => {
         blogs: 0,
         comments: 0,
         drafts: 0,
+        views: 0,
         recentBlogs: []
     })
 
@@ -54,6 +56,14 @@ const Dashboard = () => {
                 <div>
                     <p className='text-xl font-semibold text-gray-600'>{dashboardData.drafts}</p>
                     <p className='text-gray-400 font-light'>Drafts</p>
+                </div>
+            </div>
+
+            <div className='flex items-center gap-4 bg-white p-4 min-w-58 rounded shadow cursor-pointer hover:scale-105 transition-all'>
+                <img src={assets.dashboard_icon_1} alt="Total views" />
+                <div>
+                    <p className='text-xl font-semibold text-gray-600'>{formatNumber(dashboardData.views)}</p>
+                    <p className='text-gray-400 font-light'>Views</p>
                 </div>
             </div>
         </div>
