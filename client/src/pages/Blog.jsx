@@ -7,6 +7,7 @@ import Footer from '../components/Footer'
 import Loader from '../components/Loader'
 import { useAppContext } from '../context/AppContext'
 import { getReadingTime } from '../utils/readingTime'
+import { useDocumentTitle } from '../hooks/useDocumentTitle'
 import toast from 'react-hot-toast'
 
 const Blog = () => {
@@ -19,6 +20,8 @@ const Blog = () => {
   const [comments, setComments] = useState([])
   const [name, setName] = useState('')
   const [content, setContent] = useState('')
+
+  useDocumentTitle(data ? `${data.title} — Blogify` : 'Blogify')
 
   const fetchBlogData = async ()=>{
     try {
