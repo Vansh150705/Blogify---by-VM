@@ -167,6 +167,10 @@ export const addComment = async (req, res) =>{
             return res.json({success: false, message: "Name and comment are required"})
         }
 
+        if(content.trim().length > 1000){
+            return res.json({success: false, message: "Comment must be 1000 characters or fewer"})
+        }
+
         await Comment.create({blog, name: name.trim(), content: content.trim()});
         res.json({success: true, message: 'Comment added for review'})
     } catch (error) {
