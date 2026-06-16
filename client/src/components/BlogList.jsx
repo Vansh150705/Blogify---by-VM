@@ -7,7 +7,7 @@ import { useAppContext } from '../context/AppContext'
 const BlogList = () => {
 
     const [menu, setMenu] = useState("All")
-    const {blogs, input} = useAppContext()
+    const {blogs, input, loading} = useAppContext()
 
     const filteredBlogs = ()=>{
       if(input === ''){
@@ -36,7 +36,11 @@ const BlogList = () => {
             </div>
         ))}
       </div>
-      {displayedBlogs.length > 0 ? (
+      {loading ? (
+        <div className='flex justify-center mb-24'>
+          <div className='animate-spin rounded-full h-10 w-10 border-4 border-t-[#1ABC9C] border-gray-200'></div>
+        </div>
+      ) : displayedBlogs.length > 0 ? (
         <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-8 mb-24 mx-8 sm:mx-16 xl:mx-40'>
           {displayedBlogs.map((blog)=> <BlogCard key={blog._id} blog={blog}/>)}
         </div>

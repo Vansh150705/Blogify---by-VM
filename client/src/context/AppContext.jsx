@@ -15,6 +15,7 @@ export const AppProvider = ({ children })=>{
     const [token, setToken] = useState(null)
     const [blogs, setBlogs] = useState([])
     const [input, setInput] = useState("")
+    const [loading, setLoading] = useState(true)
 
     const fetchBlogs = async ()=>{
         try {
@@ -22,6 +23,8 @@ export const AppProvider = ({ children })=>{
            data.success ? setBlogs(data.blogs) : toast.error(data.message)
         } catch (error) {
             toast.error(error.message)
+        } finally {
+            setLoading(false)
         }
     }
 
@@ -35,7 +38,7 @@ export const AppProvider = ({ children })=>{
     },[])
 
     const value = {
-        axios, navigate, token, setToken, blogs, setBlogs, input, setInput
+        axios, navigate, token, setToken, blogs, setBlogs, input, setInput, loading
     }
 
     return (
