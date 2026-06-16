@@ -42,8 +42,14 @@ export const getDashboard = async (req, res) =>{
         const comments = await Comment.countDocuments()
         const drafts = await Blog.countDocuments({isPublished: false})
 
+        // Sum of all blog views across the platform
+        const viewsAgg = await Blog.aggregate([
+            { $group: { _id: null, total: { $sum: "$views" } } }
+        ])
+        const views = viewsAgg[0]?.total || 0
+
         const dashboardData = {
-            blogs, comments, drafts, recentBlogs
+            blogs, comments, drafts, views, recentBlogs
         }
         res.json({success: true, dashboardData})
     } catch (error) {
