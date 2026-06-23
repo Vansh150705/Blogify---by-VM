@@ -2,6 +2,15 @@
   "name": "client",
   "private": true,
   "version": "0.0.0",
+  "description": "React + Vite frontend for Blogify",
+  "author": "Vansh Mahajan",
+  "license": "MIT",
+  "homepage": "https://github.com/Vansh150705/Blogify---by-VM#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Vansh150705/Blogify---by-VM.git",
+    "directory": "client"
+  },
   "type": "module",
   "scripts": {
     "dev": "vite",
