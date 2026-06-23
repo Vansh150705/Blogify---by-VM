@@ -5,6 +5,7 @@ import Navbar from '../components/Navbar'
 import Moment from 'moment'
 import Footer from '../components/Footer'
 import Loader from '../components/Loader'
+import ReadingProgress from '../components/ReadingProgress'
 import { useAppContext } from '../context/AppContext'
 import { getReadingTime } from '../utils/readingTime'
 import { useDocumentTitle } from '../hooks/useDocumentTitle'
@@ -68,8 +69,9 @@ const Blog = () => {
 
   return data ? (
     <div className='relative'>
+      <ReadingProgress/>
       <img src={assets.gradientBackground} alt="" className='absolute -top-50 -z-1 opacity-50'/>
-      
+
       <Navbar/>
 
       <div className='text-center mt-20 text-gray-600'>
