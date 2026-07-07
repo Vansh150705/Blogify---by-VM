@@ -40,10 +40,79 @@ Blogify by VM is a **full-stack blogging application** built with the **MERN sta
 
 ---
 
+## 📁 Project Structure
+
+```
+Blogify/
+├── client/          # React + Vite frontend (Tailwind CSS)
+│   └── src/
+└── server/          # Node.js + Express backend
+    ├── configs/     # Database & third-party API configuration
+    ├── controllers/ # Route handler logic
+    ├── middleware/  # Auth & request middleware
+    ├── models/      # Mongoose schemas
+    └── routes/      # API route definitions
+```
+
+---
+
+## 🛠️ Getting Started
+
+### Prerequisites
+- [Node.js](https://nodejs.org/) (v18 or higher)
+- A [MongoDB](https://www.mongodb.com/) database (local or Atlas)
+- API keys for **Google Gemini** and **ImageKit**
+
+### 1. Clone the repository
+```bash
+git clone https://github.com/Vansh150705/Blogify---by-VM.git
+cd Blogify---by-VM
+```
+
+### 2. Set up the backend
+```bash
+cd server
+npm install
+```
+
+Create a `.env` file inside `server/` with the following variables:
+```env
+MONGODB_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret
+GEMINI_API_KEY=your_google_gemini_api_key
+IMAGEKIT_PUBLIC_KEY=your_imagekit_public_key
+IMAGEKIT_PRIVATE_KEY=your_imagekit_private_key
+IMAGEKIT_URL_ENDPOINT=your_imagekit_url_endpoint
+```
+
+Start the server:
+```bash
+npm run server
+```
+
+### 3. Set up the frontend
+```bash
+cd ../client
+npm install
+```
+
+Create a `.env` file inside `client/` with your API base URL:
+```env
+VITE_BASE_URL=http://localhost:3000
+```
+
+Start the development server:
+```bash
+npm run dev
+```
+
+The app will be available at `http://localhost:5173`.
+
+---
+
 ## 🚀 Admin Credentials (Demo)
 
 - **Email:** `admin@example.com`  
 - **Password:** `123456`  
 
 > ⚠️ These credentials are for demonstration purposes only.
-
