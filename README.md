@@ -116,3 +116,9 @@ The app will be available at `http://localhost:5173`.
 - **Password:** `123456`  
 
 > ⚠️ These credentials are for demonstration purposes only.
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License** — see the [LICENSE](./LICENSE) file for details.
