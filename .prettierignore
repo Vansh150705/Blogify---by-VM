@@ -1,0 +1,19 @@
+node_modules
+client/node_modules
+server/node_modules
+
+# Build output
+dist
+build
+client/dist
+
+# Lockfiles
+package-lock.json
+client/package-lock.json
+server/package-lock.json
+
+# Assets
+*.svg
+*.png
+*.jpg
+*.ico
