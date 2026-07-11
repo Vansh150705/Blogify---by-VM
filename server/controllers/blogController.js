@@ -46,7 +46,22 @@ export const addBlog = async (req, res)=>{
 
 export const getAllBlogs = async (req, res)=>{
     try {
-        const blogs = await Blog.find({isPublished: true})
+        const { search, category } = req.query;
+
+        const query = { isPublished: true };
+
+        if (category && category !== 'All') {
+            query.category = category;
+        }
+
+        if (search) {
+            query.$or = [
+                { title: { $regex: search, $options: 'i' } },
+                { category: { $regex: search, $options: 'i' } },
+            ];
+        }
+
+        const blogs = await Blog.find(query).sort({ createdAt: -1 })
         res.json({success: true, blogs})
     } catch (error) {
         res.json({success: false, message: error.message})
