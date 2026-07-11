@@ -7,6 +7,7 @@ const blogSchema = new mongoose.Schema({
     category: {type: String, required: true},
     image: {type: String, required: true},
     isPublished: {type: Boolean, required: true},
+    views: {type: Number, default: 0},
 },{timestamps: true});
 
 const Blog = mongoose.model('blog', blogSchema);

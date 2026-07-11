@@ -71,7 +71,12 @@ export const getAllBlogs = async (req, res)=>{
 export const getBlogById = async (req, res) =>{
     try {
         const { blogId } = req.params;
-        const blog = await Blog.findById(blogId)
+        // Increment the view count atomically and return the updated document
+        const blog = await Blog.findByIdAndUpdate(
+            blogId,
+            { $inc: { views: 1 } },
+            { new: true }
+        )
         if(!blog){
             return res.json({ success: false, message: "Blog not found" });
         }
