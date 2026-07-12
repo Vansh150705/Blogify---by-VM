@@ -8,6 +8,7 @@ import AddBlog from './pages/admin/AddBlog'
 import ListBlog from './pages/admin/ListBlog'
 import Comments from './pages/admin/Comments'
 import Login from './components/admin/Login'
+import NotFound from './pages/NotFound'
 import ScrollToTop from './components/ScrollToTop'
 import 'quill/dist/quill.snow.css'
 import {Toaster} from 'react-hot-toast'
@@ -30,6 +31,7 @@ const App = () => {
           <Route path='listBlog' element={<ListBlog/>}/>
           <Route path='comments' element={<Comments/>}/>
         </Route>
+        <Route path='*' element={<NotFound/>} />
       </Routes>
     </div>
   )
