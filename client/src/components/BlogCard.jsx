@@ -1,5 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
+import { getReadingTime } from '../utils/readingTime';
 
 const BlogCard = ({blog}) => {
 
@@ -13,6 +14,7 @@ const BlogCard = ({blog}) => {
       <div className='p-5'>
         <h5 className='mb-2 font-medium text-gray-900'>{title}</h5>
         <p className='mb-3 text-xs text-gray-600' dangerouslySetInnerHTML={{"__html": description.slice(0,80)}}></p>
+        <p className='text-[11px] text-gray-400'>{getReadingTime(description)} min read</p>
       </div>
     </div>
   )
