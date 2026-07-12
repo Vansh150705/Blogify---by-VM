@@ -8,6 +8,7 @@ import AddBlog from './pages/admin/AddBlog'
 import ListBlog from './pages/admin/ListBlog'
 import Comments from './pages/admin/Comments'
 import Login from './components/admin/Login'
+import ScrollToTop from './components/ScrollToTop'
 import 'quill/dist/quill.snow.css'
 import {Toaster} from 'react-hot-toast'
 import { useAppContext } from './context/AppContext'
@@ -19,6 +20,7 @@ const App = () => {
   return (
     <div>
       <Toaster/>
+      <ScrollToTop/>
       <Routes>
         <Route path='/' element={<Home/>} />
         <Route path='/blog/:id' element={<Blog/>} />
